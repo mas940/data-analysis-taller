@@ -2,6 +2,7 @@ import os
 
 import numpy as np
 from astropy.io import fits
+from pathlib import Path
 
 
 def fits_headers_to_dict(header):
@@ -90,7 +91,7 @@ class SpexodFITS:
 if __name__ == "__main__":
     star_dir = 'RULup'
     file_name = 'crires_4645nm_4978nm_Vstar_RU_LUP.fits'
-    base_folder = os.path.dirname(os.path.abspath(__file__))
+    base_folder = Path.cwd() # a fix for Google Colab specifically
     data_folder = os.path.join(base_folder, 'data_products', '2022_07_24', star_dir)
     abs_path = os.path.join(data_folder, file_name)
     example_data = SpexodFITS(abs_path)
